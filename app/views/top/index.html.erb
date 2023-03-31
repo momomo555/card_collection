@@ -1,2 +1,12 @@
-<h1>Top#index</h1>
-<p>Find me in app/views/top/index.html.erb</p>
+<div class="top-main">
+  <div class="transparent">
+    <div class="introduce" >
+      <h1>Card e-Binderへようこそ</h1>
+      <hr>
+      <p>カードリストを作成して、あなたの所有しているトレーディングカードを整理しましょう</p>
+      <% unless user_signed_in? %>
+        <%= link_to "> 新規登録してカードリストを作成する", new_user_registration_path, class: 'sign-up', method: :get %>
+      <% end %>
+    </div>
+  </div>
+</div>

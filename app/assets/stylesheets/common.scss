@@ -1,8 +1,12 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 header {
   background-color: black;
   display: flex;
   justify-content: space-between;
-  padding-right: 30px;
   align-items: center;
   padding: 10px 20px;
 
@@ -47,5 +51,46 @@ header {
     border-radius: 5px;
     color: white;
     border: none;
+  }
+}
+
+.top-main {
+  background-image: image-url('top-background.jpg') ;
+  background-size: cover;
+
+  .transparent {
+    background-color: rgba(92, 77, 66, 0.8) ;
+    height: 80vh;
+
+    .introduce {
+      color: white;
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+
+      h1 {
+        margin-top: 0;
+        padding-top: 15vh;
+        font-size: 3em;
+      }
+
+      hr {
+        border: 0;
+        background-color: rgb(244, 98, 58);
+        width: 3.5rem;
+        height: 2px;
+        margin-bottom: 2em;
+      }
+
+      .sign-up {
+        background-color: rgb(244, 98, 58);
+        padding: 1.25rem 2.25rem;
+        border-radius: 10em;
+        text-decoration: none;
+        color: white;
+        margin-top: 2em;
+        display: inline-block;
+      }
+    }
   }
 }
