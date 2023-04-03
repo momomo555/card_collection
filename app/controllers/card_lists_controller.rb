@@ -1,5 +1,6 @@
 class CardListsController < ApplicationController
   def index
+    @card_lists = CardList.all
   end
 
   def new

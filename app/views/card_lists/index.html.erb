@@ -1,0 +1,19 @@
+<h3>カードリスト一覧<h3>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>タイトル</th>
+      <th>カード種類</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @card_lists.each do |card_list| %>
+      <tr>
+        <td>card_list.id</td>
+        <td>card_list.title</td>
+        <td>card_list.card_type</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
