@@ -10,9 +10,9 @@
   <tbody>
     <% @card_lists.each do |card_list| %>
       <tr>
-        <td>card_list.id</td>
-        <td>card_list.title</td>
-        <td>card_list.card_type</td>
+        <td><%= card_list.id %></td>
+        <td><%= card_list.title %></td>
+        <td><%= card_list.card_type %></td>
       </tr>
     <% end %>
   </tbody>
