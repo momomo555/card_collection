@@ -21,6 +21,7 @@ class CardListsController < ApplicationController
   end
 
   def edit
+    @card_list = CardList.find(params[:id])
   end
 
   def update
