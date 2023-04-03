@@ -8,6 +8,13 @@ class CardListsController < ApplicationController
   end
 
   def create
+    @card_list = CardList.new(params.require(:card_list).permit(:title, :card_type, :user_id))
+    if @card_list.save
+      flash[:notice] = "カードリストを作成しました"
+      redirect_to :card_lists
+    else
+      render "new"
+    end
   end
 
   def show
