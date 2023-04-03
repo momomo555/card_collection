@@ -35,5 +35,9 @@ class CardListsController < ApplicationController
   end
 
   def destroy
+    @card_list = CardList.find(params[:id])
+    @card_list.destroy
+    flash[:notice] = "カードリストを削除しました"
+    redirect_to :card_lists
   end
 end
