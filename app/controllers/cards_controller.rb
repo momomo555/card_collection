@@ -23,4 +23,9 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
   end
+
+  def edit
+    @card = Card.find(params[:id])
+    @card_list = CardList.find(params[:card_list_id])
+  end
 end
