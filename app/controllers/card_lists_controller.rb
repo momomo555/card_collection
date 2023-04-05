@@ -18,7 +18,6 @@ class CardListsController < ApplicationController
   end
 
   def show
-    @card_list = CardList.find(params[:id])
   end
 
   def edit
