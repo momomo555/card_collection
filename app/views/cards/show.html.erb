@@ -1,0 +1,51 @@
+<h3>カード詳細</h3>
+<table>
+  <tr>
+    <th>
+      <p>名前</p>
+    </th>
+    <td>
+      <%= @card.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <p>レアリティ</p>
+    </th>
+    <td>
+      <%= @card.rarity %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <p>カード番号</p>
+    </th>
+    <td>
+      <%= @card.number %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <p>メモ欄</p>
+    </th>
+    <td>
+      <%= safe_join(@card.memo.split("\n"),tag(:br)) %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <p>所持状態</p>
+    </th>
+    <td>
+    <%= @card.owned ? "所持" : "未所持" %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <p>お気に入り</p>
+    </th>
+    <td>
+      <%= @card.favorite ? "☆" : "" %>
+    </td>
+  </tr>
+</table>

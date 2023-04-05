@@ -14,4 +14,8 @@ class CardsController < ApplicationController
       render "new"
     end
   end
+
+  def show
+    @card = Card.find(params[:id])
+  end
 end
