@@ -39,4 +39,11 @@ class CardsController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+    @card = Card.find(params[:id])
+    @card.destroy
+    flash[:notice] = "カードを削除しました"
+    redirect_to card_list_cards_path(params[:card_list_id])
+  end
 end
