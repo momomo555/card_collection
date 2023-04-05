@@ -87,7 +87,7 @@ header {
         margin-bottom: 2em;
       }
 
-      .sign-up {
+      .sign-up, .new-card-list, .card-lists {
         background-color: rgb(244, 98, 58);
         padding: 1.25rem 2.25rem;
         border-radius: 10em;
@@ -95,6 +95,11 @@ header {
         color: white;
         margin-top: 2em;
         display: inline-block;
+      }
+
+      .card-list-buttons {
+        display: flex;
+        justify-content: space-evenly;
       }
     }
   }
