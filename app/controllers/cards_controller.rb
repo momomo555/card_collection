@@ -14,7 +14,7 @@ class CardsController < ApplicationController
     @card_list = CardList.find(params[:card_list_id])
     if @card.save
       flash[:notice] = "カードを作成しました"
-      redirect_to :card_lists
+      redirect_to card_list_cards_path(@card_list.id)
     else
       render "new"
     end
