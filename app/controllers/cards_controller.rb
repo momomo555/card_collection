@@ -28,4 +28,15 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @card_list = CardList.find(params[:card_list_id])
   end
+
+  def update
+    @card = Card.find(params[:id])
+    @card_list = CardList.find(params[:card_list_id])
+    if @card.update(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id))
+      flash[:notice] = "カードを更新しました"
+      redirect_to card_list_cards_path(@card_list.id)
+    else
+      render "edit"
+    end
+  end
 end
