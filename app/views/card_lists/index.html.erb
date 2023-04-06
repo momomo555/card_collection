@@ -6,6 +6,7 @@
       <th>id</th>
       <th>タイトル</th>
       <th>カード種類</th>
+      <th>アクション</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,12 @@
         <td><%= card_list.id %></td>
         <td><%= link_to card_list.title, card_list_cards_path(card_list.id), class: 'card-list-title' %></td>
         <td><%= card_list.card_type %></td>
+        <td>
+          <div class='table-actions'>
+            <%= link_to '編集', edit_card_list_path(card_list.id),class: 'edit-card-list' %>
+            <%= button_to '削除', card_list_path(card_list.id), class: 'delete-card-list' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
