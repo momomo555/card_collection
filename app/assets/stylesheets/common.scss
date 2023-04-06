@@ -110,7 +110,7 @@ header {
   }
 }
 
-.card-list-title, .card-name, .new-card-list, .new-card, .edit-card-list, .delete-card-list {
+.card-list-title, .card-name, .new-card-list, .new-card, .edit-card-list, .delete-button, .edit-card {
   color: #1A0DAB;
 }
 
@@ -118,13 +118,12 @@ header {
   display: flex;
   gap: 1em;
 
-    .delete-card-list {
+    .delete-button {
       border: none;
       background: transparent;
       text-decoration: underline;
       padding: 0;
       font-size: 1em;
-      font-weight: bold;
     }
 }
 
