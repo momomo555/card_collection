@@ -13,7 +13,7 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><%= card.name %></td>
+        <td><%= link_to card.name, card_list_card_path(@card_list.id, card.id), class: 'card-name' %></td>
         <td><%= card.rarity %></td>
         <td><%= card.number %></td>
         <td><%= card.owned ? "所持" : "未所持" %></td>
