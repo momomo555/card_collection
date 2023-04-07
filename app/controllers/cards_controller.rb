@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   def index
     @card_list = CardList.find(params[:card_list_id])
-    @cards = Card.where(card_list_id: @card_list.id)
+    @cards = Card.where(card_list_id: @card_list.id).page(params[:page])
   end
 
   def new

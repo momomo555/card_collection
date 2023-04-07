@@ -1,6 +1,6 @@
 class CardListsController < ApplicationController
   def index
-    @card_lists = current_user.card_lists
+    @card_lists = current_user.card_lists.page(params[:page])
   end
 
   def new
