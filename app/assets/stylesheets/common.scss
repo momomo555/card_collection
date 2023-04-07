@@ -127,6 +127,24 @@ header {
     }
 }
 
+.log-in-wrapper, .sign-up-wrapper {
+  height: 80vh;
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+
+.log-in-box, .sign-up-box {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  text-align: center;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
 footer {
   background-color: black;
   color: white;
