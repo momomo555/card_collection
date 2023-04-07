@@ -76,3 +76,4 @@ end
 
 gem "devise"
 gem "kaminari"
+gem "rails-i18n"
