@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>id</th>
-      <th>タイトル</th>
-      <th>カード種類</th>
+      <th>タイトル<%= sort_asc 'title' %><%= sort_desc 'title' %></th>
+      <th>カード種類<%= sort_asc 'card_type' %><%= sort_desc 'card_type' %></th>
       <th>アクション</th>
     </tr>
   </thead>

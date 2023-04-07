@@ -4,11 +4,11 @@
 <table>
   <thead>
     <tr>
-      <th>名前</th>
-      <th>レアリティ</th>
-      <th>カード番号</th>
-      <th>所持状態</th>
-      <th>お気に入り</th>
+      <th>名前<%= sort_asc 'name' %><%= sort_desc 'name' %></th>
+      <th>レアリティ<%= sort_asc 'rarity' %><%= sort_desc 'rarity' %></th>
+      <th>カード番号<%= sort_asc 'number' %><%= sort_desc 'number' %></th>
+      <th>所持状態<%= sort_asc 'owned' %><%= sort_desc 'owned' %></th>
+      <th>お気に入り<%= sort_asc 'favorite' %><%= sort_desc 'favorite' %></th>
       <th>アクション</th>
     </tr>
   </thead>

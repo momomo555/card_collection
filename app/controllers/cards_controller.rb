@@ -1,7 +1,10 @@
 class CardsController < ApplicationController
+  include ApplicationHelper
   def index
     @card_list = CardList.find(params[:card_list_id])
-    @cards = Card.where(card_list_id: @card_list.id).page(params[:page])
+    # rubocop:disable Airbnb/RiskyActiverecordInvocation
+    @cards = Card.where(card_list_id: @card_list.id).page(params[:page]).order(sort_column + ' ' + sort_direction)
+    # rubocop:enable Airbnb/RiskyActiverecordInvocation
   end
 
   def new
@@ -45,5 +48,11 @@ class CardsController < ApplicationController
     @card.destroy
     flash[:notice] = "カードを削除しました"
     redirect_to card_list_cards_path(params[:card_list_id])
+  end
+
+  private
+
+  def sort_column
+    Card.column_names.include?(params[:column]) ? params[:column] : "name"
   end
 end
