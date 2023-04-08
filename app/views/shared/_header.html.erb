@@ -9,6 +9,7 @@
   <% else %>
     <div class="right-menu">
       <%= link_to "ログイン", new_user_session_path, class: 'log-in', method: :get %>
+      <%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'guest-log-in' , data: { 'turbo-method': :post } %>
       <%= link_to "新規登録", new_user_registration_path, class: 'sign-up', method: :get %>
     </div>
   <% end %>
