@@ -1,6 +1,10 @@
 <header>
   <div class="left-menu">
     <%= link_to "Card e-Binder", root_path, class: 'logo' %>
+    <% if user_signed_in? %>
+      <%= link_to "カードリスト作成", new_card_list_path, class: 'header-new-card-list' %>
+      <%= link_to "カードリスト一覧", card_lists_path, class: 'header-card-lists' %>
+    <% end %>
   </div>
   <% if user_signed_in? %>
     <div class="right-menu">
