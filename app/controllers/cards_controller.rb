@@ -19,7 +19,7 @@ class CardsController < ApplicationController
       flash[:notice] = "カードを作成しました"
       redirect_to card_list_cards_path(@card_list.id)
     else
-      render "new"
+      render "new", status: :unprocessable_entity
     end
   end
 
@@ -40,7 +40,7 @@ class CardsController < ApplicationController
       flash[:notice] = "カードを更新しました"
       redirect_to card_list_cards_path(@card_list.id)
     else
-      render "edit"
+      render "edit", status: :unprocessable_entity
     end
   end
 
