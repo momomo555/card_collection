@@ -17,7 +17,7 @@
         <td><%= card_list.card_type %></td>
         <td>
           <div class='table-actions'>
-            <%= link_to '編集', edit_card_list_path(card_list.id),class: 'edit-card-list' %>
+            <%= link_to '編集', edit_card_list_path(card_list.id), class: 'edit-card-list' %>
             <%= button_to '削除', card_list_path(card_list.id), class: 'delete-button' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
           </div>
         </td>
