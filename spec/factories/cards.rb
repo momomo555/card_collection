@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :card do
     card_list { nil }
-    name { "MyString" }
-    number { "MyString" }
-    rarity { "MyString" }
-    memo { "MyText" }
+    name { "monster" }
+    number { "ST1-1" }
+    rarity { "N" }
+    memo { "good" }
     owned { false }
     favorite { false }
   end
