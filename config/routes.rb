@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   root 'top#index'
   get 'top/index'
-  resources :card_lists do
+  resources :card_lists, except: [:show] do
     resources :cards
   end
 end
