@@ -11,7 +11,7 @@ RSpec.describe "CardLists", type: :system do
       fill_in 'タイトル', with: 'BT-1'
       fill_in 'カード種類', with: 'テスモンカード'
       click_button '作成'
-      expect(page).to have_content 'カードリストを作成しました'
+      expect(page).to have_content 'カードリストを作成しました。'
       expect(page).to have_content 'BT-1'
       expect(page).to have_content 'テスモンカード'
     end
@@ -31,24 +31,26 @@ RSpec.describe "CardLists", type: :system do
       fill_in 'タイトル', with: 'BT-2'
       fill_in 'カード種類', with: 'テスカ'
       click_button '編集を完了'
-      expect(page).to have_content 'カードリストを更新しました'
+      expect(page).to have_content 'カードリストを更新しました。'
       expect(page).to have_content 'BT-2'
       expect(page).to have_content 'テスカ'
     end
   end
 
   describe 'ヘッダーのカードリスト関連アクション' do
-    it '「カードリスト作成」リンク押下でカードリスト新規作成画面に遷移すること' do
+    it 'メニュー内「カードリスト作成」リンク押下でカードリスト新規作成画面に遷移すること' do
       login_as user
       within 'header' do
+        find('#accordion-menu').click
         click_link 'カードリスト作成'
       end
       expect(current_path).to eq new_card_list_path
     end
 
-    it '「カードリスト一覧」リンク押下でカードリスト一覧画面に遷移すること' do
+    it 'メニュー内「カードリスト一覧」リンク押下でカードリスト一覧画面に遷移すること' do
       login_as user
       within 'header' do
+        find('#accordion-menu').click
         click_link 'カードリスト一覧'
       end
       expect(current_path).to eq card_lists_path
@@ -56,10 +58,10 @@ RSpec.describe "CardLists", type: :system do
   end
 
   describe 'カードリスト一覧画面' do
-    it '「カードリスト新規作成」リンク押下でカードリスト新規作成画面に遷移すること' do
+    it '「新規作成」リンク押下でカードリスト新規作成画面に遷移すること' do
       login_as user
       visit card_lists_path
-      click_link 'カードリスト新規作成'
+      click_link '新規作成'
       expect(current_path).to eq new_card_list_path
     end
 
@@ -81,7 +83,7 @@ RSpec.describe "CardLists", type: :system do
       login_as user
       visit card_lists_path
       click_button '削除'
-      expect(page).to have_content 'カードリストを削除しました'
+      expect(page).to have_content 'カードリストを削除しました。'
       expect(page).not_to have_content 'MyString'
     end
   end

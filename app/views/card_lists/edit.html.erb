@@ -1,27 +1,19 @@
-<h3>カードリスト編集</h3>
-<%= render "shared/error", obj: @card_list %>
-<%= form_with model: @card_list do |f| %>
-  <table>
-    <tr>
-      <th>
-        <%= f.label :title , "タイトル" %>
-        <small>必須</small>
-      </th>
-      <td>
-        <%= f.text_field :title, required: true %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :card_type , "カード種類" %>
-      </th>
-      <td>
-        <%= f.text_field :card_type %>
-      </td>
-    </tr>
-  </table>
-  <div>
-    <%= f.submit "編集を完了" %>
-  </div>
-<% end %>
-<%= link_to "カードリスト一覧へ戻る", card_lists_path, class: 'back-to-card-lists' %>
+<div class='edit-card-list-wrapper'>
+  <h3>カードリスト編集</h3>
+  <%= render "shared/error", obj: @card_list %>
+  <%= form_with model: @card_list do |f| %>
+    <div class='field'>
+      <%= f.label :title , "タイトル" %>
+      <small>【必須】</small>
+      <%= f.text_field :title, required: true %>
+    </div>
+    <div class='field'>
+      <%= f.label :card_type , "カード種類" %>
+      <%= f.text_field :card_type %>
+    </div>
+    <div class='actions'>
+      <%= f.submit "編集を完了" %>
+    </div>
+  <% end %>
+  <%= link_to "カードリスト一覧へ戻る", card_lists_path, class: 'back-to-card-lists' %>
+</div>

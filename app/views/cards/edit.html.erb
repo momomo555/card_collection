@@ -1,64 +1,37 @@
-<h3>カード情報更新</h3>
-<%= render "shared/error", obj: @card %>
-<%= form_with model: [@card_list, @card] do |f| %>
-  <table>
-    <tr>
-      <th>カードリスト名：</th>
-      <td><%= @card_list.title %></td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :name , "名前" %>
-        <small>必須</small>
-      </th>
-      <td>
-        <%= f.text_field :name, required: true %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :rarity , "レアリティ" %>
-      </th>
-      <td>
-        <%= f.text_field :rarity %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :number , "カード番号" %>
-      </th>
-      <td>
-        <%= f.text_field :number %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :memo , "メモ欄" %>
-      </th>
-      <td>
-        <%= f.text_area :memo %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :owned , "所持済" %>
-      </th>
-      <td>
-        <%= f.check_box :owned %>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <%= f.label :favorite , "お気に入り" %>
-      </th>
-      <td>
-        <%= f.check_box :favorite %>
-      </td>
-    </tr>
-  </table>
-  <%= f.hidden_field :card_list_id, value: @card_list.id %>
-  <div>
-    <%= f.submit "更新" %>
-  </div>
-<% end %>
-<%= link_to "カード一覧へ戻る", card_list_cards_path(@card_list.id), class: "back-to-cards" %>
+<div class='edit-card-wrapper' >
+  <h3>カード情報更新</h3>
+  <h4>カードリスト：<%= @card_list.title %></h4>
+  <%= render "shared/error", obj: @card %>
+  <%= form_with model: [@card_list, @card] do |f| %>
+    <div class='field'>
+      <%= f.label :name , "名前" %>
+      <small>【必須】</small>
+      <%= f.text_field :name, required: true %>
+    </div>
+    <div class='field'>
+      <%= f.label :rarity , "レアリティ" %>
+      <%= f.text_field :rarity %>
+    </div>
+    <div class='field'>
+      <%= f.label :number , "カード番号" %>
+      <%= f.text_field :number %>
+    </div>
+    <div class='field'>
+      <%= f.label :memo , "メモ欄" %>
+      <%= f.text_area :memo %>
+    </div>
+    <div class='field'>
+      <%= f.check_box :owned %>
+      <%= f.label :owned , "所持済" %>
+    </div>
+    <div class='field'>
+      <%= f.check_box :favorite %>
+      <%= f.label :favorite , "お気に入り" %>
+    </div>
+    <%= f.hidden_field :card_list_id, value: @card_list.id %>
+    <div class='actions'>
+      <%= f.submit "更新" %>
+    </div>
+  <% end %>
+  <%= link_to "カード一覧へ戻る", card_list_cards_path(@card_list.id), class: "back-to-cards" %>
+</div>

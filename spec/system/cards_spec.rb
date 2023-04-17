@@ -16,7 +16,7 @@ RSpec.describe "Cards", type: :system do
       check '所持済'
       check 'お気に入り'
       click_button '登録'
-      expect(page).to have_content 'カードを作成しました'
+      expect(page).to have_content 'カードを登録しました。'
       expect(page).to have_content 'SR'
       expect(page).to have_content 'BT1-01'
       expect(page).to have_content '所持'
@@ -42,7 +42,7 @@ RSpec.describe "Cards", type: :system do
       check '所持済'
       check 'お気に入り'
       click_button '更新'
-      expect(page).to have_content 'カードを更新しました'
+      expect(page).to have_content 'カード情報を更新しました。'
       expect(page).to have_content 'UR'
       expect(page).to have_content 'BT2-01'
       expect(page).to have_content '所持'
@@ -67,10 +67,10 @@ RSpec.describe "Cards", type: :system do
   end
 
   describe 'カード一覧画面' do
-    it '「カード登録」リンク押下でカード登録画面に遷移すること' do
+    it '「新規登録」リンク押下でカード登録画面に遷移すること' do
       login_as user
       visit card_list_cards_path(card_list.id)
-      click_link 'カード登録'
+      click_link '新規登録'
       expect(current_path).to eq new_card_list_card_path(card_list.id)
     end
 
@@ -92,7 +92,7 @@ RSpec.describe "Cards", type: :system do
       login_as user
       visit card_list_cards_path(card_list.id)
       click_button '削除'
-      expect(page).to have_content 'カードを削除しました'
+      expect(page).to have_content 'カードを削除しました。'
       expect(page).not_to have_content 'monster'
     end
   end

@@ -16,7 +16,7 @@ class CardsController < ApplicationController
     @card = Card.new(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id))
     @card_list = CardList.find(params[:card_list_id])
     if @card.save
-      flash[:notice] = "カードを作成しました"
+      flash[:notice] = "カードを登録しました。"
       redirect_to card_list_cards_path(@card_list.id)
     else
       render "new", status: :unprocessable_entity
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @card_list = CardList.find(params[:card_list_id])
     if @card.update(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id))
-      flash[:notice] = "カードを更新しました"
+      flash[:notice] = "カード情報を更新しました。"
       redirect_to card_list_cards_path(@card_list.id)
     else
       render "edit", status: :unprocessable_entity
@@ -47,7 +47,7 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-    flash[:notice] = "カードを削除しました"
+    flash[:notice] = "カードを削除しました。"
     redirect_to card_list_cards_path(params[:card_list_id])
   end
 

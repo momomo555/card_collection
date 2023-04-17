@@ -1,9 +1,15 @@
 <header>
   <div class="left-menu">
     <%= link_to "Card e-Binder", root_path, class: 'logo' %>
+    <%= link_to root_path do %>
+      <%= image_tag 'Card e-Binder.png', size: '50x50', alt: 'logo-picture' %>
+    <% end %>
     <% if user_signed_in? %>
-      <%= link_to "カードリスト作成", new_card_list_path, class: 'header-new-card-list' %>
-      <%= link_to "カードリスト一覧", card_lists_path, class: 'header-card-lists' %>
+      <details>
+        <summary id='accordion-menu'>メニュー</summary>
+        <li><%= link_to "カードリスト作成", new_card_list_path, class: 'header-new-card-list' %></li>
+        <li><%= link_to "カードリスト一覧", card_lists_path, class: 'header-card-lists' %></li>
+      </details>
     <% end %>
   </div>
   <% if user_signed_in? %>
