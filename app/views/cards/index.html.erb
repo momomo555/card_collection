@@ -2,9 +2,9 @@
   <%= @card_list.title %> - Card e-Binder
 <% end %>
 <div class='card-index-wrapper'>
-  <h3>カード一覧</h3>
+  <h2>カード一覧</h2>
   <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>
-  <h4>カードリスト：<%= @card_list.title %></h4>
+  <h3>カードリスト：<%= @card_list.title %></h3>
   <table>
     <thead>
       <tr>

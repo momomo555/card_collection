@@ -2,8 +2,8 @@
   カード登録 - Card e-Binder
 <% end %>
 <div class='new-card-wrapper' >
-  <h3>カード登録</h3>
-  <h4>カードリスト：<%= @card_list.title %></h4>
+  <h2>カード登録</h2>
+  <h3>カードリスト：<%= @card_list.title %></h3>
   <%= render "shared/error", obj: @card %>
   <%= form_with model: [@card_list, @card] do |f| %>
     <div class='field'>

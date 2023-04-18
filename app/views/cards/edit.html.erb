@@ -2,8 +2,8 @@
   カード情報更新 - Card e-Binder
 <% end %>
 <div class='edit-card-wrapper' >
-  <h3>カード情報更新</h3>
-  <h4>カードリスト：<%= @card_list.title %></h4>
+  <h2>カード情報更新</h2>
+  <h3>カードリスト：<%= @card_list.title %></h3>
   <%= render "shared/error", obj: @card %>
   <%= form_with model: [@card_list, @card] do |f| %>
     <div class='field'>
