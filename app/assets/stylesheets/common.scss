@@ -23,6 +23,10 @@ h3 {
   margin-top: 0.5rem;
 }
 
+input[type='submit'], button {
+  cursor: pointer;
+}
+
 table {
   margin: 0 auto;
   border-collapse: collapse;
