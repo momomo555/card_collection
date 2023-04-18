@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      card: カード
+      card_list: カードリスト
+    attributes:
+      card:
+        name: 名前
+        number: カード番号
+        rarity: レアリティ
+        memo: メモ欄
+        owned: 所持済
+        favorite: お気に入り
+      card_list:
+        title: タイトル
+        card_type: カード種類
