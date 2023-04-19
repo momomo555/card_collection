@@ -1,0 +1,31 @@
+<% content_for :title do %>
+  カードリスト一覧 - Card e-Binder
+<% end %>
+<div class='card-list-index-wrapper'>
+  <h2>カードリスト一覧</h2>
+  <%= link_to '新規作成', new_card_list_path, class: 'new-card-list' %>
+  <table>
+    <thead>
+      <tr>
+        <th class='title'>タイトル<%= sort_asc 'title' %><%= sort_desc 'title' %></th>
+        <th class='card-type'>カード種類<%= sort_asc 'card_type' %><%= sort_desc 'card_type' %></th>
+        <th class='action'>アクション</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @card_lists.each do |card_list| %>
+        <tr>
+          <td class='title'><%= link_to card_list.title, card_list_cards_path(card_list.id), class: 'card-list-title' %></td>
+          <td class='card-type'><%= card_list.card_type %></td>
+          <td class='action'>
+            <div class='table-actions'>
+              <%= link_to '編集', edit_card_list_path(card_list.id), class: 'edit-card-list' %>
+              <%= button_to '削除', card_list_path(card_list.id), class: 'delete-button' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @card_lists %>
+</div>

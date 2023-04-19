@@ -1,0 +1,26 @@
+<header>
+  <div class="left-menu">
+    <%= link_to "Card e-Binder", root_path, class: 'logo' %>
+    <%= link_to root_path do %>
+      <%= image_tag 'Card e-Binder.png', size: '50x50', alt: 'logo-picture' %>
+    <% end %>
+    <% if user_signed_in? %>
+      <details>
+        <summary id='accordion-menu'>メニュー</summary>
+        <li><%= link_to "カードリスト作成", new_card_list_path, class: 'header-new-card-list' %></li>
+        <li><%= link_to "カードリスト一覧", card_lists_path, class: 'header-card-lists' %></li>
+      </details>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="right-menu">
+      <%= button_to "ログアウト", destroy_user_session_path, class: 'log-out', method: :delete %>
+    </div>
+  <% else %>
+    <div class="right-menu">
+      <%= link_to "ログイン", new_user_session_path, class: 'log-in', method: :get %>
+      <%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'guest-log-in' , data: { 'turbo-method': :post } %>
+      <%= link_to "新規登録", new_user_registration_path, class: 'sign-up', method: :get %>
+    </div>
+  <% end %>
+</header>

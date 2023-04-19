@@ -1,0 +1,310 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 10vh;
+  background-color: rgb(255, 240, 245);
+}
+
+a, button {
+  color: #1A0DAB;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h3 {
+  margin-top: 0.5rem;
+}
+
+input[type='submit'], button {
+  cursor: pointer;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+
+  th {
+    border: 1px solid #000066;
+    background-color: rgb(175, 238, 238);
+
+    a {
+      text-decoration: none;
+      color: #1A0DAB;
+    }
+  }
+
+  td {
+    border: 1px solid #000066;
+    background-color: rgb(230, 230, 250);
+  }
+}
+
+header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 10vh;
+  box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  details {
+    color: white;
+    cursor: pointer;
+    
+    li::before {
+      content: '・';
+    }
+  }
+
+  .left-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    .logo{
+      font-size: 30px;
+      font-family: 'Libre Baskerville', serif;    }
+
+    img {
+      display: none;
+    }
+  }
+
+  .right-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .log-in, .guest-log-in, .sign-up, .log-out {
+      background-color: rgb(0, 140, 255);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .sign-up {
+      background-color: rgb(135, 135, 137);
+    }
+
+    .log-out {
+      color: white;
+      border: none;
+      font-size: 1rem;
+    }
+  }
+}
+
+.notice, .alert {
+  background-color: rgb(255, 228, 196);
+  margin: 0;
+  text-align: center;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.top-main {
+  background-image: image-url('top-background.jpg') ;
+  background-size: cover;
+
+  .transparent {
+    background-color: rgba(92, 77, 66, 0.8) ;
+    min-height: 80vh;
+
+    .introduce {
+      color: white;
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+
+      h1 {
+        margin-top: 0;
+        padding-top: 15vh;
+        font-size: 3rem;
+      }
+
+      hr {
+        border: 0;
+        background-color: rgb(244, 98, 58);
+        width: 3.5rem;
+        height: 2px;
+        margin-bottom: 2rem;
+      }
+
+      .sign-up, .new-card-list, .card-lists {
+        background-color: rgb(244, 98, 58);
+        padding: 1.25rem 2.25rem;
+        border-radius: 10rem;
+        text-decoration: none;
+        color: white;
+        margin: 1em 0;
+        display: inline-block;
+      }
+
+      .card-list-buttons {
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
+.card-list-index-wrapper {
+  text-align: center;
+
+  .new-card-list {
+    position: absolute;
+    top: 11vh;
+    right: 1vw;
+    background-color: rgb(255, 99, 71);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .title {
+    width: 40vw;
+  }
+  
+  .card-type {
+    width: 20vw;
+  }
+
+  .action {
+    width: 10vw;
+  }
+}
+
+.card-index-wrapper {
+  text-align: center;
+
+  .new-card {
+    position: absolute;
+    top: 11vh;
+    right: 1vw;
+    background-color: rgb(255, 99, 71);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .name {
+    width: 20vw;
+  }
+
+  .rarity, .number, .owned, .favorite, .action {
+    width: 10vw;
+  }
+}
+
+.pagination {
+  margin-bottom: 1rem;
+}
+
+.show-card-wrapper {
+  h4, p {
+    margin: 0;
+  }
+}
+
+
+.table-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+    .delete-button {
+      border: none;
+      background: transparent;
+      text-decoration: underline;
+      padding: 0;
+      font-size: 1rem;
+    }
+}
+
+.log-in-wrapper, .sign-up-wrapper, .new-card-list-wrapper, .edit-card-list-wrapper,
+.edit-card-wrapper, .new-card-wrapper, .show-card-wrapper {
+  width: 80%;
+  margin: 1rem auto;
+  padding-bottom: 3rem;
+  text-align: center;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+
+  h2 {
+    margin-top: 0;
+  }
+
+  input[type='text'], textarea {
+    display: block;
+    width: 30vw;
+    margin  : 0 auto; 
+  }
+
+  input[type='submit'] {
+    margin-bottom: 1rem ;
+  }
+
+  .field {
+    margin: 1rem auto;
+  }
+}
+
+footer {
+  background-color: black;
+  color: white;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  p {
+    margin: 0;
+    padding-top: 5vh;
+    padding-bottom: 0 ;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1280px){
+  .table-actions {
+    display: block;
+  }
+}
+
+@media (max-width: 768px){
+  html {
+    font-size: 13px;
+  }
+
+  header {
+    .left-menu {
+      .logo {
+        display: none;
+      }
+
+      img {
+        display: block;
+      }
+    }
+  }
+
+  .card-list-buttons {
+    flex-direction: column;
+  }
+}

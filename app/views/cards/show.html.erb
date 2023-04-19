@@ -1,0 +1,32 @@
+<% content_for :title do %>
+  <%= @card.name %> - Card e-Binder
+<% end %>
+<div class='show-card-wrapper'>
+  <h2>カード詳細</h2>
+    <h3>カードリスト：<%= @card_list.title %></h3>
+    <div class='field'>
+      <h4>名前</h4>
+      <p><%= @card.name %></p>
+    </div>
+    <div class='field'>
+      <h4>レアリティ</h4>
+      <p><%= @card.rarity %></p>
+    </div>
+    <div class='field'>
+      <h4>カード番号</h4>
+      <p><%= @card.number %></p>
+    </div>
+    <div class='field'>
+      <h4>メモ欄</h4>
+      <p><%= safe_join(@card.memo.split("\n"),tag(:br)) %></p>
+    </div>
+    <div class='field'>
+      <h4>所持状態</h4>
+      <p><%= @card.owned ? "所持" : "未所持" %></p>
+    </div>
+    <div class='field'>
+      <h4>お気に入り</h4>
+      <p><%= @card.favorite ? "☆" : "" %></p>
+    </div>
+  <%= link_to "カード一覧へ戻る", card_list_cards_path(@card_list.id), class: "back-to-cards" %>
+</div>

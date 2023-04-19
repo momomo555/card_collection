@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  カードリスト新規作成 - Card e-Binder
+<% end %>
+<div class='new-card-list-wrapper'>
+  <h2>カードリスト新規作成</h2>
+  <%= render "shared/error", obj: @card_list %>
+  <%= form_with model: @card_list do |f| %>
+    <div class='field'>
+      <%= f.label :title , "タイトル" %>
+      <small>【必須】</small>
+      <%= f.text_field :title, required: true %>
+    </div>
+    <div class='field'>
+      <%= f.label :card_type , "カード種類" %>
+      <%= f.text_field :card_type %>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class='actions'>
+      <%= f.submit "作成" %>
+    </div>
+  <% end %>
+  <%= link_to "カードリスト一覧へ戻る", card_lists_path, class: 'back-to-card-lists' %>
+</div>
