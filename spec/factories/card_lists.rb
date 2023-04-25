@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :card_list do
     user { nil }
-    title { "MyString" }
-    card_type { "MyString" }
+    title { "ブースター第１弾" }
+    card_type { "ポケモンカード" }
   end
 end
