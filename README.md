@@ -3,9 +3,8 @@
 自分の所有しているトレーディングカードを整理できるサイトです。<br>
 任意のカードリストを作成して、作成したカードリストにカードを登録することができます。<br>
 これにより、自分がどんなカードを持っているのか、持っていないのかなど整理できます。
-<img width="1510" alt="Top" src="https://user-images.githubusercontent.com/75765095/233628460-cde3feff-4823-4959-a013-2d51a9b6734d.png">
-<img width="1511" alt="Card-index" src="https://user-images.githubusercontent.com/75765095/233629776-9fdf6e83-b812-41ee-a5a6-85b1fc8f326f.png">
-
+<img width="1512" alt="Top" src="https://user-images.githubusercontent.com/75765095/234252339-6c21b46b-8e74-4139-aa62-bdde68891452.png">
+<img width="1512" alt="Cards" src="https://user-images.githubusercontent.com/75765095/234252409-eb6fd057-81ba-4595-86f2-707d78d85357.png">
 
 # URL
 https://card-e-binder.herokuapp.com/<br>
