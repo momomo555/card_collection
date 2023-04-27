@@ -4,7 +4,10 @@ RSpec.describe Card, type: :model do
   describe 'バリデーション' do
     let(:user) { create(:user) }
     let(:card_list) { create(:card_list, user: user) }
-    let!(:card) { create(:card, card_list: card_list) }
+    let(:card) { create(:card, card_list: card_list) }
+    before do
+      card.image = fixture_file_upload('pikachu.png')
+    end
 
     context 'nameが存在する場合' do
       it '登録できること' do

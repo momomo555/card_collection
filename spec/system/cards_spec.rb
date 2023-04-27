@@ -21,6 +21,7 @@ RSpec.describe "Cards", type: :system do
       fill_in 'メモ欄', with: '欲しい'
       check '所持済'
       check 'お気に入り'
+      attach_file '画像', "#{Rails.root}/spec/fixtures/files/pikachu.png"
       click_button '登録'
       expect(page).to have_content 'カードを登録しました。'
       expect(page).to have_content 'SR'
@@ -47,6 +48,7 @@ RSpec.describe "Cards", type: :system do
       fill_in 'メモ欄', with: 'かっこいい'
       check '所持済'
       check 'お気に入り'
+      attach_file '画像', "#{Rails.root}/spec/fixtures/files/pikachu.png"
       click_button '更新'
       expect(page).to have_content 'カード情報を更新しました。'
       expect(page).to have_content 'UR'
