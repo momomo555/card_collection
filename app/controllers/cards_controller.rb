@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id))
+    @card = Card.new(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id, :image))
     @card_list = CardList.find(params[:card_list_id])
     if @card.save
       flash[:notice] = "カードを登録しました。"
@@ -36,7 +36,7 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card_list = CardList.find(params[:card_list_id])
-    if @card.update(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id))
+    if @card.update(params.require(:card).permit(:name, :rarity, :number, :memo, :owned, :favorite, :card_list_id, :image))
       flash[:notice] = "カード情報を更新しました。"
       redirect_to card_list_cards_path(@card_list.id)
     else
