@@ -31,6 +31,18 @@
       <%= f.check_box :favorite %>
       <%= f.label :favorite , "お気に入り" %>
     </div>
+    <div class='field'>
+      <%= f.label :image , "画像" %>
+      <%= f.file_field :image %>
+    </div>
+    <div class='field'>
+      <p>[現在登録されている画像]<p>
+      <% if @card.image.attached? %>
+        <%= image_tag @card.image.variant(resize: "300") %>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
     <%= f.hidden_field :card_list_id, value: @card_list.id %>
     <div class='actions'>
       <%= f.submit "更新" %>

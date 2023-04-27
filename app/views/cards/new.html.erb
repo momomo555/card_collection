@@ -31,6 +31,10 @@
       <%= f.check_box :favorite %>
       <%= f.label :favorite , "お気に入り" %>
     </div>
+    <div class='field'>
+      <%= f.label :image , "画像" %>
+      <%= f.file_field :image %>
+    </div>
     <%= f.hidden_field :card_list_id, value: @card_list.id %>
     <div class='actions'>
       <%= f.submit "登録" %>
