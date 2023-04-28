@@ -28,6 +28,11 @@ input[type='submit'], button {
   font-weight: normal;
 }
 
+input[type='file'], img {
+  display: block;
+  margin: 0 auto;
+}
+
 table {
   margin: 0 auto;
   border-collapse: collapse;
@@ -218,7 +223,7 @@ header {
   margin-bottom: 1rem;
 }
 
-.show-card-wrapper {
+.show-card-wrapper, .edit-card-wrapper {
   h4, p {
     margin: 0;
   }
@@ -298,6 +303,11 @@ footer {
     transform: scale(0.8);
   }
 
+  img {
+    width: 60%;
+    max-width: 300px;
+  }
+
   header {
     .left-menu {
       .logo {
@@ -306,6 +316,8 @@ footer {
 
       img {
         display: block;
+        width: auto;
+        margin-bottom: 0;
       }
     }
   }

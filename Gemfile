@@ -78,3 +78,6 @@ gem "devise"
 gem "kaminari"
 gem "rails-i18n"
 gem "devise-i18n"
+gem 'mini_magick'
+gem 'image_processing'
+gem "aws-sdk-s3", require: false

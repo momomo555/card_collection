@@ -28,5 +28,13 @@
       <h4>お気に入り</h4>
       <p><%= @card.favorite ? "☆" : "" %></p>
     </div>
+    <div class='field'>
+      <h4>カード画像</h4>
+      <% if @card.image.attached? %>
+        <%= image_tag @card.image.variant(resize: "300") %>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
   <%= link_to "カード一覧へ戻る", card_list_cards_path(@card_list.id), class: "back-to-cards" %>
 </div>
