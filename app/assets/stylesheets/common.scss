@@ -325,4 +325,10 @@ footer {
   .card-list-buttons {
     flex-direction: column;
   }
+
+  .new-card-list-wrapper, .edit-card-list-wrapper, .edit-card-wrapper, .new-card-wrapper {
+    input[type='text'], textarea {
+      width: 60vw;
+    }
+  }
 }
