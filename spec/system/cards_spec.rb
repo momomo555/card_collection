@@ -195,4 +195,89 @@ RSpec.describe "Cards", type: :system do
       end
     end
   end
+
+  describe '検索画面' do
+    let(:other_card_list) { create(:card_list, user: user, title: 'スターター第１弾') }
+    let!(:other_card) do
+      create(:card, card_list: other_card_list, name: 'trainer', number: 'ST1-2',
+                    rarity: 'R', memo: 'nice', owned: true, favorite: true)
+    end
+
+    before do
+      visit cards_search_path
+    end
+
+    it 'デフォルトで全てのカードが表示されること' do
+      expect(page).to have_content '検索結果：2件'
+      expect(page).to have_content 'monster'
+      expect(page).to have_content 'ブースター第１弾'
+      expect(page).to have_content 'trainer'
+      expect(page).to have_content 'スターター第１弾'
+    end
+
+    it '検索にヒットしたものだけ表示されること' do
+      fill_in 'search-form', with: 'monster'
+      click_button '検索'
+      expect(page).to have_content '検索結果：1件'
+      expect(page).to have_content 'monster'
+      expect(page).to have_content 'ブースター第１弾'
+      expect(page).not_to have_content 'trainer'
+      expect(page).not_to have_content 'スターター第１弾'
+    end
+
+    it '部分一致で検索されること' do
+      fill_in 'search-form', with: 'onst'
+      click_button '検索'
+      expect(page).to have_content '検索結果：1件'
+      expect(page).to have_content 'monster'
+      expect(page).to have_content 'ブースター第１弾'
+    end
+
+    describe 'ソート機能' do
+      it 'カードの名前でソートできること' do
+        # デフォルトでカードの名前の昇順
+        expect(page.text).to match /#{card.name}[\s\S]*#{other_card.name}/
+        # 降順ソート
+        within '#card-name-header' do
+          click_link '▼'
+        end
+        expect(page.text).to match /#{other_card.name}[\s\S]*#{card.name}/
+        # 昇順ソート
+        within '#card-name-header' do
+          click_link '▲'
+        end
+        expect(page.text).to match /#{card.name}[\s\S]*#{other_card.name}/
+      end
+
+      it 'カードリストのタイトルでソートできること' do
+        # 昇順ソート
+        within '#card-list-title-header' do
+          click_link '▲'
+        end
+        expect(page.text).to match /#{other_card_list.title}[\s\S]*#{card_list.title}/
+        # 降順ソート
+        within '#card-list-title-header' do
+          click_link '▼'
+        end
+        expect(page.text).to match /#{card_list.title}[\s\S]*#{other_card_list.title}/
+      end
+    end
+
+    describe 'ページネーション機能' do
+      it '20件の場合、ページネーションが表示されないこと' do
+        create_list(:card, 18, card_list: card_list)
+        visit current_path
+        expect(page).not_to have_selector '.pagination'
+      end
+
+      it '21件の場合、ページネーションが表示されページ遷移できること' do
+        create_list(:card, 19, card_list: card_list)
+        visit current_path
+        expect(page).to have_selector '.pagination'
+        click_link '次 ›'
+        expect(current_path).to eq cards_search_path
+        expect(page).to have_content '‹ 前'
+      end
+    end
+  end
 end

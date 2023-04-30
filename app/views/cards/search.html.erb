@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  カード検索 - Card e-Binder
+<% end %>
+<div class='card-search-wrapper'>
+<h2>カード検索</h2>
+<div>
+  <%= form_with url: cards_search_path, method: :get do |f| %>
+    <%= f.text_field :word, placeholder: 'カード名を入力してください' , value: params[:word], id: 'search-form' %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+  <h3>検索結果：<%= @card_count %>件</h3>
+  <table>
+    <thead>
+      <tr>
+        <th class='card-name' id='card-name-header'>名前<%= sort_asc 'name' %><%= sort_desc 'name' %></th>
+        <th class='card-list-title' id='card-list-title-header'>カードリスト<%= sort_asc 'title' %><%= sort_desc 'title' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.each do |card| %>
+        <tr>
+          <td class='card-name'><%= link_to card.name, card_list_card_path(card.card_list.id, card.id), class: 'card-name' %></td>
+          <td class='card-list-title'><%= link_to card.card_list.title, card_list_cards_path(card.card_list.id), class: 'card-list-title' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @cards %>
+</div>
