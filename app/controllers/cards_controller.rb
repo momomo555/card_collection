@@ -51,6 +51,14 @@ class CardsController < ApplicationController
     redirect_to card_list_cards_path(params[:card_list_id])
   end
 
+  def search
+    @cards = Card.where(card_list_id: current_user.card_lists.ids).where("name LIKE?", "%#{params[:word]}%")
+    @card_count = @cards.count
+    # rubocop:disable Airbnb/RiskyActiverecordInvocation
+    @cards = @cards.page(params[:page]).order(sort_column + ' ' + sort_direction).includes(:card_list)
+    # rubocop:enable Airbnb/RiskyActiverecordInvocation
+  end
+
   private
 
   def sort_column
