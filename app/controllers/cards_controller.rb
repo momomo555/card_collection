@@ -62,6 +62,12 @@ class CardsController < ApplicationController
   private
 
   def sort_column
-    Card.column_names.include?(params[:column]) ? params[:column] : "name"
+    if Card.column_names.include?(params[:column])
+      params[:column]
+    elsif CardList.column_names.include?(params[:column])
+      "card_lists.#{params[:column]}"
+    else
+      "name"
+    end
   end
 end
