@@ -2,13 +2,14 @@
   <div class="left-menu">
     <%= link_to "Card e-Binder", root_path, class: 'logo' %>
     <%= link_to root_path do %>
-      <%= image_tag 'Card e-Binder.png', size: '50x50', alt: 'logo-picture' %>
+      <%= image_tag 'Card e-Binder.png', size: '70x70', alt: 'logo-picture' %>
     <% end %>
     <% if user_signed_in? %>
       <details>
         <summary id='accordion-menu'>メニュー</summary>
         <li><%= link_to "カードリスト作成", new_card_list_path, class: 'header-new-card-list' %></li>
         <li><%= link_to "カードリスト一覧", card_lists_path, class: 'header-card-lists' %></li>
+        <li><%= link_to "カード検索", cards_search_path, class: 'header-card-search' %></li>
       </details>
     <% end %>
   </div>
