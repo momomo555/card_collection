@@ -12,7 +12,7 @@
         <%= link_to "> 新規登録してカードリストを作成する", new_user_registration_path, class: 'sign-up', method: :get %>
       <% else %>
         <div class="card-list-buttons">
-          <%= link_to "カードリスト作成へ", new_card_list_path, class: 'new-card-list' %>
+          <%= link_to "カードリスト作成へ", new_card_list_path, class: 'top-new-card-list' %>
           <%= link_to "カードリスト一覧へ", card_lists_path, class: 'card-lists' %>
         </div>
         <%= link_to "カードを検索する", cards_search_path, class: 'card-search' %>
