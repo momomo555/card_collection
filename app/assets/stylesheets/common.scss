@@ -151,7 +151,7 @@ header {
         margin-bottom: 2rem;
       }
 
-      .sign-up, .new-card-list, .card-lists, .card-search {
+      .sign-up, .top-new-card-list, .card-lists, .card-search {
         background-color: rgb(244, 98, 58);
         padding: 1.25rem 2.25rem;
         border-radius: 10rem;
@@ -173,93 +173,6 @@ header {
       }
     }
   }
-}
-
-.card-list-index-wrapper {
-  text-align: center;
-
-  .new-card-list {
-    position: absolute;
-    top: 17vh;
-    right: 2vw;
-    background-color: rgb(255, 99, 71);
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .title {
-    width: 40vw;
-  }
-  
-  .card-type {
-    width: 20vw;
-  }
-
-  .action {
-    width: 10vw;
-  }
-}
-
-.card-index-wrapper {
-  text-align: center;
-
-  .new-card {
-    position: absolute;
-    top: 17vh;
-    right: 2vw;
-    background-color: rgb(255, 99, 71);
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .name {
-    width: 20vw;
-  }
-
-  .rarity, .number, .owned, .favorite, .action {
-    width: 10vw;
-  }
-}
-
-.card-search-wrapper {
-  text-align: center;
-
-  #search-form {
-    width: 20vw;
-  }
-
-  .card-name, .card-list-title {
-    width: 30vw;
-  }
-}
-
-.pagination {
-  margin-bottom: 1rem;
-}
-
-.show-card-wrapper, .edit-card-wrapper {
-  h4, p {
-    margin: 0;
-  }
-}
-
-
-.table-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-
-    .delete-button {
-      border: none;
-      background: transparent;
-      text-decoration: underline;
-      padding: 0;
-      font-size: 1rem;
-    }
 }
 
 .log-in-wrapper, .sign-up-wrapper, .new-card-list-wrapper, .edit-card-list-wrapper,
@@ -287,6 +200,105 @@ header {
   .field {
     margin: 1rem auto;
   }
+}
+
+.new-card-list, .new-card, .edit, .delete {
+  position: absolute;
+  top: 18vh;
+  right: 10vw;
+  background-color: rgb(255, 99, 71);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.card-list-index-wrapper {
+  text-align: center;
+
+  .title {
+    width: 40vw;
+    box-sizing: border-box;
+  }
+  
+  .card-type {
+    width: 30vw;
+    box-sizing: border-box;
+  }
+
+  .action {
+    width: 10vw;
+    box-sizing: border-box;
+  }
+}
+
+.card-index-wrapper {
+  text-align: center;
+
+  .name {
+    width: 30vw;
+    box-sizing: border-box;
+  }
+
+  .rarity, .number, .owned, .favorite, .action {
+    width: 10vw;
+    box-sizing: border-box;
+  }
+}
+
+.card-search-wrapper {
+  text-align: center;
+
+  #search-form {
+    width: 20vw;
+  }
+
+  .card-name, .card-list-title {
+    width: 40vw;
+    box-sizing: border-box;
+  }
+}
+
+.pagination {
+  margin-bottom: 1rem;
+}
+
+.show-card-wrapper, .edit-card-wrapper {
+  h4, p {
+    margin: 0;
+  }
+}
+
+.card-actions {
+  display: flex;
+  width: 80%;
+  margin: 1rem auto;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  .edit {
+    position: static;
+  }
+  
+  .delete {
+    position: static;
+    border: none;
+    font-size: 1rem;
+  }
+}
+
+.table-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+    .delete-button {
+      border: none;
+      background: transparent;
+      text-decoration: underline;
+      padding: 0;
+      font-size: 1rem;
+    }
 }
 
 footer {

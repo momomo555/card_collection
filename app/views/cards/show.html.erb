@@ -1,6 +1,10 @@
 <% content_for :title do %>
   <%= @card.name %> - Card e-Binder
 <% end %>
+<div class='card-actions'>
+  <%= link_to '編集', edit_card_list_card_path(@card_list.id, @card.id), class: 'edit' %>
+  <%= button_to '削除', card_list_card_path(@card_list.id, @card.id), class: 'delete' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+</div>
 <div class='show-card-wrapper'>
   <h2>カード詳細</h2>
   <h3>カードリスト：<%= @card_list.title %></h3>

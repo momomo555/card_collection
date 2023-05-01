@@ -57,10 +57,10 @@ RSpec.describe "Cards", type: :system do
     before do
       card.image = fixture_file_upload('pikachu.png')
       card.save
+      visit card_list_card_path(card_list.id, card.id)
     end
 
     it 'カード情報が表示されること' do
-      visit card_list_card_path(card_list.id, card.id)
       expect(page).to have_content 'monster'
       expect(page).to have_content 'N'
       expect(page).to have_content 'BT1-1'
@@ -69,6 +69,18 @@ RSpec.describe "Cards", type: :system do
       expect(page).not_to have_content '☆'
       # 投稿したファイル名文字列で終わるsrc属性を持つimgタグがあることを確認
       expect(page).to have_selector "img[src$='pikachu.png']"
+    end
+    
+    it '「編集」リンク押下で編集画面に遷移できること' do
+      click_link '編集'
+      expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
+    end
+
+    it '「削除」ボタン押下でカードリストを削除できること' do
+      click_button '削除'
+      expect(current_path).to eq card_list_cards_path(card_list.id)
+      expect(page).to have_content 'カードを削除しました。'
+      expect(page).not_to have_content 'monster'
     end
   end
 
