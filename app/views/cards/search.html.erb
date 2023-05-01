@@ -2,13 +2,13 @@
   カード検索 - Card e-Binder
 <% end %>
 <div class='card-search-wrapper'>
-<h2>カード検索</h2>
-<div>
-  <%= form_with url: cards_search_path, method: :get do |f| %>
-    <%= f.text_field :word, placeholder: 'カード名を入力してください' , value: params[:word], id: 'search-form' %>
-    <%= f.submit '検索' %>
-  <% end %>
-</div>
+  <h2>カード検索</h2>
+  <div>
+    <%= form_with url: cards_search_path, method: :get do |f| %>
+      <%= f.text_field :word, placeholder: 'カード名を入力してください', value: params[:word], id: 'search-form' %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
   <h3>検索結果：<%= @card_count %>件</h3>
   <table>
     <thead>

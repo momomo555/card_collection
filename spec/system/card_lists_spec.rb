@@ -21,11 +21,6 @@ RSpec.describe "CardLists", type: :system do
       expect(page).to have_content 'BT-1'
       expect(page).to have_content 'テスモンカード'
     end
-
-    it '「カードリスト一覧へ戻る」押下でカードリスト一覧画面に遷移すること' do
-      click_link 'カードリスト一覧へ戻る'
-      expect(current_path).to eq card_lists_path
-    end
   end
 
   describe '編集画面' do
@@ -63,9 +58,11 @@ RSpec.describe "CardLists", type: :system do
       visit card_lists_path
     end
 
-    it '「新規作成」リンク押下でカードリスト新規作成画面に遷移すること' do
+    it '「新規作成」リンク押下でカードリスト新規作成画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link '新規作成'
       expect(current_path).to eq new_card_list_path
+      click_link '戻る'
+      expect(current_path).to eq card_lists_path
     end
 
     it 'カードリストタイトルのリンク押下でカード一覧画面に遷移すること' do
@@ -73,9 +70,11 @@ RSpec.describe "CardLists", type: :system do
       expect(current_path).to eq card_list_cards_path(card_list.id)
     end
 
-    it '「編集」リンク押下でカードリスト編集画面に遷移すること' do
+    it '「編集」リンク押下でカードリスト編集画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link '編集'
       expect(current_path).to eq edit_card_list_path(card_list.id)
+      click_link '戻る'
+      expect(current_path).to eq card_lists_path
     end
 
     it '「削除」ボタン押下でカードリストを削除できること' do
