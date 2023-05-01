@@ -29,11 +29,6 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '所持'
       expect(page).to have_content '☆'
     end
-
-    it '「カード一覧へ戻る」リンク押下でカード一覧画面に遷移すること' do
-      click_link 'カード一覧へ戻る'
-      expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
   end
 
   describe '編集画面' do
@@ -56,18 +51,24 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '所持'
       expect(page).to have_content '☆'
     end
-
-    it '「カード一覧へ戻る」リンク押下でカード一覧画面に遷移すること' do
-      click_link 'カード一覧へ戻る'
-      expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
   end
 
   describe 'カード詳細画面' do
-    it '「カード一覧へ戻る」リンク押下でカード一覧画面に遷移すること' do
+    before do
+      card.image = fixture_file_upload('pikachu.png')
+      card.save
+    end
+
+    it 'カード情報が表示されること' do
       visit card_list_card_path(card_list.id, card.id)
-      click_link 'カード一覧へ戻る'
-      expect(current_path).to eq card_list_cards_path(card_list.id)
+      expect(page).to have_content 'monster'
+      expect(page).to have_content 'N'
+      expect(page).to have_content 'BT1-1'
+      expect(page).to have_content 'good'
+      expect(page).to have_content '未所持'
+      expect(page).not_to have_content '☆'
+      # 投稿したファイル名文字列で終わるsrc属性を持つimgタグがあることを確認
+      expect(page).to have_selector "img[src$='pikachu.png']"
     end
   end
 
@@ -76,19 +77,25 @@ RSpec.describe "Cards", type: :system do
       visit card_list_cards_path(card_list.id)
     end
 
-    it '「新規登録」リンク押下でカード登録画面に遷移すること' do
+    it '「新規登録」リンク押下でカード登録画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link '新規登録'
       expect(current_path).to eq new_card_list_card_path(card_list.id)
+      click_link '戻る'
+      expect(current_path).to eq card_list_cards_path(card_list.id)
     end
 
-    it 'カード名のリンク押下でカード詳細画面に遷移すること' do
+    it 'カード名のリンク押下でカード詳細画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link card.name
       expect(current_path).to eq card_list_card_path(card_list.id, card.id)
+      click_link '戻る'
+      expect(current_path).to eq card_list_cards_path(card_list.id)
     end
 
-    it '「編集」リンク押下でカード編集画面に遷移すること' do
+    it '「編集」リンク押下でカード編集画面に遷移、「戻る」リンク押下で戻れること' do
       click_link '編集'
       expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
+      click_link '戻る'
+      expect(current_path).to eq card_list_cards_path(card_list.id)
     end
 
     it '「削除」ボタン押下でカードリストを削除できること' do
@@ -99,7 +106,7 @@ RSpec.describe "Cards", type: :system do
 
     describe 'ソート機能' do
       let!(:other_card) do
-        create(:card, card_list: card_list, name: 'trainer', number: 'ST1-2',
+        create(:card, card_list: card_list, name: 'trainer', number: 'BT1-2',
                       rarity: 'R', memo: 'nice', owned: true, favorite: true)
       end
 
@@ -133,7 +140,7 @@ RSpec.describe "Cards", type: :system do
         within '#rarity-header' do
           click_link '▼'
         end
-        expect(page.text).to match /#{other_card.name}[\s\S]*#{card.name}/
+        expect(page.text).to match /#{other_card.rarity}[\s\S]*#{card.rarity}/
       end
 
       it 'カード番号でソートできること' do
@@ -141,12 +148,12 @@ RSpec.describe "Cards", type: :system do
         within '#number-header' do
           click_link '▲'
         end
-        expect(page.text).to match /#{card.rarity}[\s\S]*#{other_card.rarity}/
+        expect(page.text).to match /#{card.number}[\s\S]*#{other_card.number}/
         # 降順ソート
         within '#number-header' do
           click_link '▼'
         end
-        expect(page.text).to match /#{other_card.name}[\s\S]*#{card.name}/
+        expect(page.text).to match /#{other_card.number}[\s\S]*#{card.number}/
       end
 
       it '所持状態でソートできること' do
@@ -199,7 +206,7 @@ RSpec.describe "Cards", type: :system do
   describe '検索画面' do
     let(:other_card_list) { create(:card_list, user: user, title: 'スターター第１弾') }
     let!(:other_card) do
-      create(:card, card_list: other_card_list, name: 'trainer', number: 'ST1-2',
+      create(:card, card_list: other_card_list, name: 'trainer', number: 'BT1-2',
                     rarity: 'R', memo: 'nice', owned: true, favorite: true)
     end
 

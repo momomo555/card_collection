@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :card do
     card_list { nil }
     name { "monster" }
-    number { "ST1-1" }
+    number { "BT1-1" }
     rarity { "N" }
     memo { "good" }
     owned { false }
