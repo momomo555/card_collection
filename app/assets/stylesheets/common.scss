@@ -204,8 +204,8 @@ header {
 
 .new-card-list, .new-card, .edit, .delete {
   position: absolute;
-  top: 17vh;
-  right: 2vw;
+  top: 18vh;
+  right: 10vw;
   background-color: rgb(255, 99, 71);
   padding: 5px;
   border-radius: 5px;
@@ -218,14 +218,17 @@ header {
 
   .title {
     width: 40vw;
+    box-sizing: border-box;
   }
   
   .card-type {
-    width: 20vw;
+    width: 30vw;
+    box-sizing: border-box;
   }
 
   .action {
     width: 10vw;
+    box-sizing: border-box;
   }
 }
 
@@ -233,11 +236,13 @@ header {
   text-align: center;
 
   .name {
-    width: 20vw;
+    width: 30vw;
+    box-sizing: border-box;
   }
 
   .rarity, .number, .owned, .favorite, .action {
     width: 10vw;
+    box-sizing: border-box;
   }
 }
 
@@ -249,7 +254,8 @@ header {
   }
 
   .card-name, .card-list-title {
-    width: 30vw;
+    width: 40vw;
+    box-sizing: border-box;
   }
 }
 
