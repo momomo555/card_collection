@@ -9,6 +9,7 @@ body {
 
 a, button {
   color: #1A0DAB;
+  font-family: inherit;
 }
 
 ul {
@@ -278,7 +279,6 @@ header {
 
   .edit {
     position: static;
-    font-size: 1rem;
   }
   
   .delete {
