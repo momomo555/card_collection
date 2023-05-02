@@ -141,6 +141,16 @@ RSpec.describe "Cards", type: :system do
     end
   end
 
+  describe 'ヘッダーのカード関連アクション' do
+    it 'メニュー内「カード検索」リンク押下でカード検索画面に遷移すること' do
+      within 'header' do
+        find('#accordion-menu').click
+        click_link 'カード検索'
+      end
+      expect(current_path).to eq cards_search_path
+    end
+  end
+
   describe 'カード一覧画面' do
     before do
       visit card_list_cards_path(card_list.id)
