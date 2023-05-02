@@ -1,6 +1,7 @@
 <% content_for :title do %>
   新規登録 - Card e-Binder
 <% end %>
+<% breadcrumb :new_user %>
 <div class="sign-up-wrapper">
   <h2>新規登録</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

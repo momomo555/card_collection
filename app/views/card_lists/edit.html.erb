@@ -1,6 +1,7 @@
 <% content_for :title do %>
   カードリスト編集 - Card e-Binder
 <% end %>
+<% breadcrumb :edit_cardlist, @card_list %>
 <div class='edit-card-list-wrapper'>
   <h2>カードリスト編集</h2>
   <%= render "shared/error", obj: @card_list %>

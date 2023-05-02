@@ -1,6 +1,7 @@
 <% content_for :title do %>
   カードリスト新規作成 - Card e-Binder
 <% end %>
+<% breadcrumb :new_cardlist %>
 <div class='new-card-list-wrapper'>
   <h2>カードリスト新規作成</h2>
   <%= render "shared/error", obj: @card_list %>

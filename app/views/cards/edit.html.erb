@@ -1,6 +1,7 @@
 <% content_for :title do %>
   カード情報更新 - Card e-Binder
 <% end %>
+<% breadcrumb :edit_card, [@card_list, @card] %>
 <div class='edit-card-wrapper' >
   <h2>カード情報更新</h2>
   <h3>カードリスト：<%= @card_list.title %></h3>

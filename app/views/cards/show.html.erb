@@ -1,6 +1,7 @@
 <% content_for :title do %>
   <%= @card.name %> - Card e-Binder
 <% end %>
+<% breadcrumb :show_card, [@card_list, @card] %>
 <div class='card-actions'>
   <%= link_to '編集', edit_card_list_card_path(@card_list.id, @card.id), class: 'edit' %>
   <%= button_to '削除', card_list_card_path(@card_list.id, @card.id), class: 'delete' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>

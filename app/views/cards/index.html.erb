@@ -1,6 +1,7 @@
 <% content_for :title do %>
   <%= @card_list.title %> - Card e-Binder
 <% end %>
+<% breadcrumb :cards, @card_list %>
 <div class='card-index-wrapper'>
   <h2>カード一覧</h2>
   <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>

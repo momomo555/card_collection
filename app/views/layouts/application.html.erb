@@ -20,6 +20,7 @@
     <% if alert %>
       <p class="alert"><%= alert %></p>  
     <% end %>
+    <%= breadcrumbs separator: " &rsaquo; " %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>
