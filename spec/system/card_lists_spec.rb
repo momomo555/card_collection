@@ -21,17 +21,40 @@ RSpec.describe "CardLists", type: :system do
       expect(page).to have_content 'BT-1'
       expect(page).to have_content 'テスモンカード'
     end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+    end
   end
 
   describe '編集画面' do
-    it '更新できること' do
+    before do
       visit edit_card_list_path(card_list.id)
+    end
+
+    it '更新できること' do
       fill_in 'タイトル', with: 'BT-2'
       fill_in 'カード種類', with: 'テスカ'
       click_button '編集を完了'
       expect(page).to have_content 'カードリストを更新しました。'
       expect(page).to have_content 'BT-2'
       expect(page).to have_content 'テスカ'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+
+      visit edit_card_list_path(card_list.id)
+      within '.breadcrumbs' do
+        click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
     end
   end
 
@@ -81,6 +104,13 @@ RSpec.describe "CardLists", type: :system do
       click_button '削除'
       expect(page).to have_content 'カードリストを削除しました。'
       expect(page).not_to have_content 'ブースター第１弾'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
     end
 
     describe 'ソート機能' do
