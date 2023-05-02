@@ -3,8 +3,10 @@
 <% end %>
 <% breadcrumb :cards, @card_list %>
 <div class='card-index-wrapper'>
-  <h2>カード一覧</h2>
-  <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>
+  <div class='card-index-heading'>
+    <h2>カード一覧</h2>
+    <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>
+  </div>
   <h3>カードリスト：<%= @card_list.title %></h3>
   <table>
     <thead>
@@ -14,7 +16,6 @@
         <th class='number' id='number-header'>カード番号<%= sort_asc 'number' %><%= sort_desc 'number' %></th>
         <th class='owned' id='owned-header'>所持状態<%= sort_asc 'owned' %><%= sort_desc 'owned' %></th>
         <th class='favorite' id='favorite-header'>お気に入り<%= sort_asc 'favorite' %><%= sort_desc 'favorite' %></th>
-        <th class='action'>アクション</th>
       </tr>
     </thead>
     <tbody>
@@ -25,12 +26,6 @@
           <td class='number'><%= card.number %></td>
           <td class='owned'><%= card.owned ? "所持" : "未所持" %></td>
           <td class='favorite'><%= card.favorite ? "☆" : "" %></td>
-          <td class='action'>
-            <div class='table-actions'>
-              <%= link_to '編集', edit_card_list_card_path(@card_list.id, card.id), class: 'edit-card' %>
-              <%= button_to '削除', card_list_card_path(@card_list.id, card.id), class: 'delete-button' , method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
-            </div>
-          </td>
         </tr>
       <% end %>
     </tbody>

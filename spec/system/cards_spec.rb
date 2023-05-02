@@ -88,6 +88,12 @@ RSpec.describe "Cards", type: :system do
         click_link 'カード一覧'
       end
       expect(current_path).to eq card_list_cards_path(card_list.id)
+
+      visit edit_card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カード詳細'
+      end
+      expect(current_path).to eq card_list_card_path(card_list.id, card.id)
     end
   end
 
@@ -109,9 +115,11 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_selector "img[src$='pikachu.png']"
     end
 
-    it '「編集」リンク押下で編集画面に遷移できること' do
+    it '「編集」リンク押下で編集画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link '編集'
       expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
+      click_link '戻る'
+      expect(current_path).to eq card_list_card_path(card_list.id, card.id)
     end
 
     it '「削除」ボタン押下でカードリストを削除できること' do
@@ -141,6 +149,16 @@ RSpec.describe "Cards", type: :system do
     end
   end
 
+  describe 'ヘッダーのカード関連アクション' do
+    it 'メニュー内「カード検索」リンク押下でカード検索画面に遷移すること' do
+      within 'header' do
+        find('#accordion-menu').click
+        click_link 'カード検索'
+      end
+      expect(current_path).to eq cards_search_path
+    end
+  end
+
   describe 'カード一覧画面' do
     before do
       visit card_list_cards_path(card_list.id)
@@ -158,19 +176,6 @@ RSpec.describe "Cards", type: :system do
       expect(current_path).to eq card_list_card_path(card_list.id, card.id)
       click_link '戻る'
       expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
-
-    it '「編集」リンク押下でカード編集画面に遷移、「戻る」リンク押下で戻れること' do
-      click_link '編集'
-      expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
-      click_link '戻る'
-      expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
-
-    it '「削除」ボタン押下でカードリストを削除できること' do
-      click_button '削除'
-      expect(page).to have_content 'カードを削除しました。'
-      expect(page).not_to have_content 'monster'
     end
 
     it 'パンくずリストが表示され、リンク先に遷移できること' do

@@ -55,8 +55,7 @@ table {
 }
 
 .breadcrumbs {
-  margin-top: 1rem;
-  margin-left: 10vw;
+  margin: 1rem 10vw;
 }
 
 header {
@@ -209,14 +208,25 @@ header {
 }
 
 .new-card-list, .new-card, .edit, .delete {
-  position: absolute;
-  top: 22vh;
-  right: 10vw;
   background-color: rgb(255, 99, 71);
   padding: 5px;
   border-radius: 5px;
   color: white;
   text-decoration: none;
+}
+
+.card-list-heading, .card-index-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.new-card-list, .new-card {
+  position: absolute;
+  right: 0;
 }
 
 .card-list-index-wrapper {
@@ -242,7 +252,7 @@ header {
   text-align: center;
 
   .name {
-    width: 30vw;
+    width: 40vw;
     box-sizing: border-box;
   }
 

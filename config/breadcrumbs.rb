@@ -44,7 +44,7 @@ end
 
 crumb :edit_card do |card_list, card|
   link "カード情報更新", edit_card_list_card_path(card_list.id, card.id)
-  parent :cards, card_list
+  parent :show_card, [card_list, card]
 end
 
 crumb :new_card do |card_list|
