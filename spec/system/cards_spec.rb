@@ -29,6 +29,25 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '所持'
       expect(page).to have_content '☆'
     end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+
+      visit new_card_list_card_path(card_list.id)
+      within '.breadcrumbs' do
+        click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
+
+      visit new_card_list_card_path(card_list.id)
+      within '.breadcrumbs' do
+        click_link 'カード一覧'
+      end
+      expect(current_path).to eq card_list_cards_path(card_list.id)
+    end
   end
 
   describe '編集画面' do
@@ -51,6 +70,25 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '所持'
       expect(page).to have_content '☆'
     end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+
+      visit edit_card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
+
+      visit edit_card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カード一覧'
+      end
+      expect(current_path).to eq card_list_cards_path(card_list.id)
+    end
   end
 
   describe 'カード詳細画面' do
@@ -70,7 +108,7 @@ RSpec.describe "Cards", type: :system do
       # 投稿したファイル名文字列で終わるsrc属性を持つimgタグがあることを確認
       expect(page).to have_selector "img[src$='pikachu.png']"
     end
-    
+
     it '「編集」リンク押下で編集画面に遷移できること' do
       click_link '編集'
       expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
@@ -81,6 +119,25 @@ RSpec.describe "Cards", type: :system do
       expect(current_path).to eq card_list_cards_path(card_list.id)
       expect(page).to have_content 'カードを削除しました。'
       expect(page).not_to have_content 'monster'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+
+      visit card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
+
+      visit card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カード一覧'
+      end
+      expect(current_path).to eq card_list_cards_path(card_list.id)
     end
   end
 
@@ -114,6 +171,19 @@ RSpec.describe "Cards", type: :system do
       click_button '削除'
       expect(page).to have_content 'カードを削除しました。'
       expect(page).not_to have_content 'monster'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+
+      visit card_list_cards_path(card_list.id)
+      within '.breadcrumbs' do
+        click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
     end
 
     describe 'ソート機能' do
@@ -250,6 +320,13 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '検索結果：1件'
       expect(page).to have_content 'monster'
       expect(page).to have_content 'ブースター第１弾'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
     end
 
     describe 'ソート機能' do

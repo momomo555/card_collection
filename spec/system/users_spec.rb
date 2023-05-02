@@ -8,11 +8,22 @@ RSpec.describe 'Users', type: :system do
       login_as user
       expect(page).to have_content 'ログインしました。'
     end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      visit new_user_session_path
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
+    end
   end
 
   describe '新規登録画面' do
-    it '新規登録できること' do
+    before do
       visit new_user_registration_path
+    end
+
+    it '新規登録できること' do
       fill_in 'Eメール', with: 'user@test.com'
       fill_in 'パスワード', with: 'testpass'
       fill_in 'パスワード（確認用）', with: 'testpass'
@@ -20,6 +31,13 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_content 'アカウント登録が完了しました。'
       new_user = User.order(:id).last
       expect(new_user.email).to eq 'user@test.com'
+    end
+
+    it 'パンくずリストが表示され、リンク先に遷移できること' do
+      within '.breadcrumbs' do
+        click_link 'Home'
+      end
+      expect(current_path).to eq root_path
     end
   end
 

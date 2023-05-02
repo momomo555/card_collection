@@ -1,6 +1,7 @@
 <% content_for :title do %>
   ログイン - Card e-Binder
 <% end %>
+<% breadcrumb :log_in %>
 <div class="log-in-wrapper">
   <h2>ログイン</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

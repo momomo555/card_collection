@@ -1,6 +1,7 @@
 <% content_for :title do %>
   カード登録 - Card e-Binder
 <% end %>
+<% breadcrumb :new_card, @card_list %>
 <div class='new-card-wrapper' >
   <h2>カード登録</h2>
   <h3>カードリスト：<%= @card_list.title %></h3>
