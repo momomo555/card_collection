@@ -109,9 +109,11 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_selector "img[src$='pikachu.png']"
     end
 
-    it '「編集」リンク押下で編集画面に遷移できること' do
+    it '「編集」リンク押下で編集画面に遷移し、「戻る」リンク押下で戻れること' do
       click_link '編集'
       expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
+      click_link '戻る'
+      expect(current_path).to eq card_list_card_path(card_list.id, card.id)
     end
 
     it '「削除」ボタン押下でカードリストを削除できること' do
@@ -168,19 +170,6 @@ RSpec.describe "Cards", type: :system do
       expect(current_path).to eq card_list_card_path(card_list.id, card.id)
       click_link '戻る'
       expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
-
-    it '「編集」リンク押下でカード編集画面に遷移、「戻る」リンク押下で戻れること' do
-      click_link '編集'
-      expect(current_path).to eq edit_card_list_card_path(card_list.id, card.id)
-      click_link '戻る'
-      expect(current_path).to eq card_list_cards_path(card_list.id)
-    end
-
-    it '「削除」ボタン押下でカードリストを削除できること' do
-      click_button '削除'
-      expect(page).to have_content 'カードを削除しました。'
-      expect(page).not_to have_content 'monster'
     end
 
     it 'パンくずリストが表示され、リンク先に遷移できること' do
