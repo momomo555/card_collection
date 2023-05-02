@@ -3,8 +3,10 @@
 <% end %>
 <% breadcrumb :cards, @card_list %>
 <div class='card-index-wrapper'>
-  <h2>カード一覧</h2>
-  <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>
+  <div class='card-index-heading'>
+    <h2>カード一覧</h2>
+    <%= link_to '新規登録', new_card_list_card_path(@card_list.id), class: 'new-card' %>
+  </div>
   <h3>カードリスト：<%= @card_list.title %></h3>
   <table>
     <thead>

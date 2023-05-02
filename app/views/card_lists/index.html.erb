@@ -3,8 +3,10 @@
 <% end %>
 <% breadcrumb :cardlists %>
 <div class='card-list-index-wrapper'>
-  <h2>カードリスト一覧</h2>
-  <%= link_to '新規作成', new_card_list_path, class: 'new-card-list' %>
+  <div class='card-list-heading'>
+    <h2>カードリスト一覧</h2>
+    <%= link_to '新規作成', new_card_list_path, class: 'new-card-list' %>
+  </div>
   <table>
     <thead>
       <tr>
