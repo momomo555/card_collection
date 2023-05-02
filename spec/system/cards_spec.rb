@@ -88,6 +88,12 @@ RSpec.describe "Cards", type: :system do
         click_link 'カード一覧'
       end
       expect(current_path).to eq card_list_cards_path(card_list.id)
+
+      visit edit_card_list_card_path(card_list.id, card.id)
+      within '.breadcrumbs' do
+        click_link 'カード詳細'
+      end
+      expect(current_path).to eq card_list_card_path(card_list.id, card.id)
     end
   end
 
