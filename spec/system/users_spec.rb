@@ -9,6 +9,14 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_content 'ログインしました。'
     end
 
+    it '正しいパスワードでない場合ログインできないこと' do
+      visit new_user_session_path
+      fill_in 'Eメール', with: user.email
+      fill_in 'パスワード', with: 'pass'
+      click_button 'ログイン'
+      expect(page).to have_content 'Eメールまたはパスワードが違います。'
+    end
+
     it 'パンくずリストが表示され、リンク先に遷移できること' do
       visit new_user_session_path
       within '.breadcrumbs' do
