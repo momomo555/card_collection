@@ -22,6 +22,11 @@ RSpec.describe "CardLists", type: :system do
       expect(page).to have_content 'テスモンカード'
     end
 
+    it 'タイトル未入力の場合新規作成できないこと' do
+      fill_in 'カード種類', with: 'テスモンカード'
+      expect { click_button '作成' }.not_to change(CardList, :count)
+    end
+
     it 'パンくずリストが表示され、リンク先に遷移できること' do
       within '.breadcrumbs' do
         click_link 'Home'
@@ -42,6 +47,12 @@ RSpec.describe "CardLists", type: :system do
       expect(page).to have_content 'カードリストを更新しました。'
       expect(page).to have_content 'BT-2'
       expect(page).to have_content 'テスカ'
+    end
+
+    it 'タイトル未入力の場合更新できないこと' do
+      fill_in 'タイトル', with: ''
+      fill_in 'カード種類', with: 'テスモンカード'
+      expect { click_button '編集を完了' }.not_to change(card_list, :card_type)
     end
 
     it 'パンくずリストが表示され、リンク先に遷移できること' do
@@ -71,6 +82,22 @@ RSpec.describe "CardLists", type: :system do
       within 'header' do
         find('#accordion-menu').click
         click_link 'カードリスト一覧'
+      end
+      expect(current_path).to eq card_lists_path
+    end
+  end
+
+  describe 'トップ画面のカードリスト関連アクション' do
+    it '「カードリスト作成へ」リンクでカードリスト新規作成画面に遷移すること' do
+      within '.top-main' do
+        click_link 'カードリスト作成へ'
+      end
+      expect(current_path).to eq new_card_list_path
+    end
+
+    it '「カードリスト一覧へ」リンクでカードリスト一覧画面に遷移すること' do
+      within '.top-main' do
+        click_link 'カードリスト一覧へ'
       end
       expect(current_path).to eq card_lists_path
     end

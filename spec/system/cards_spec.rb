@@ -30,6 +30,16 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content '☆'
     end
 
+    it '名前未入力の場合登録できないこと' do
+      fill_in 'レアリティ', with: 'SR'
+      fill_in 'カード番号', with: 'BT1-01'
+      fill_in 'メモ欄', with: '欲しい'
+      check '所持済'
+      check 'お気に入り'
+      attach_file '画像', "#{Rails.root}/spec/fixtures/files/pikachu.png"
+      expect { click_button '登録' }.not_to change(Card, :count)
+    end
+
     it 'パンくずリストが表示され、リンク先に遷移できること' do
       within '.breadcrumbs' do
         click_link 'Home'
@@ -69,6 +79,12 @@ RSpec.describe "Cards", type: :system do
       expect(page).to have_content 'BT2-01'
       expect(page).to have_content '所持'
       expect(page).to have_content '☆'
+    end
+
+    it '名前未入力の場合更新できないこと' do
+      fill_in '名前', with: ''
+      fill_in 'レアリティ', with: 'SR'
+      expect { click_button '更新' }.not_to change(card, :rarity)
     end
 
     it 'パンくずリストが表示され、リンク先に遷移できること' do
@@ -154,6 +170,15 @@ RSpec.describe "Cards", type: :system do
       within 'header' do
         find('#accordion-menu').click
         click_link 'カード検索'
+      end
+      expect(current_path).to eq cards_search_path
+    end
+  end
+
+  describe 'トップ画面のカード関連アクション' do
+    it '「カードを検索する」リンクでカード検索画面に遷移すること' do
+      within '.top-main' do
+        click_link 'カードを検索する'
       end
       expect(current_path).to eq cards_search_path
     end
